@@ -39,7 +39,7 @@ namespace BookReaderServices.Controllers
                                 }
                             };
                         var response =
-                            this.Request.CreateResponse(HttpStatusCode.Created, allBooks);
+                            this.Request.CreateResponse(HttpStatusCode.Created, allBooks.ToList()); //very important to call .ToList() or else it fails to serialize
                         return response;
                     }
                 });

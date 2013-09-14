@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="36d1f3292bc94f9abdae1873f5c28346" Name="Diagram1">
+        <EntityTypeShape EntityType="db680e9f024324438c8485a239007e3497Model.Author" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db680e9f024324438c8485a239007e3497Model.Book" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="db680e9f024324438c8485a239007e3497Model.Category" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db680e9f024324438c8485a239007e3497Model.Comment" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db680e9f024324438c8485a239007e3497Model.Review" Width="1.5" PointX="8.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="db680e9f024324438c8485a239007e3497Model.Shelf" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db680e9f024324438c8485a239007e3497Model.sysdiagram" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="db680e9f024324438c8485a239007e3497Model.User" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="db680e9f024324438c8485a239007e3497Model.FK_Books_Authors" ManuallyRouted="false" />
+        <AssociationConnector Association="db680e9f024324438c8485a239007e3497Model.FK_Books_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="db680e9f024324438c8485a239007e3497Model.FK_Comments_Books" ManuallyRouted="false" />
+        <AssociationConnector Association="db680e9f024324438c8485a239007e3497Model.FK_Review_Books" ManuallyRouted="false" />
+        <AssociationConnector Association="db680e9f024324438c8485a239007e3497Model.FK_Comments_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="db680e9f024324438c8485a239007e3497Model.FK_Review_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="db680e9f024324438c8485a239007e3497Model.FK_Shelves_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="db680e9f024324438c8485a239007e3497Model.Comments_Books" ManuallyRouted="false" />
+        <AssociationConnector Association="db680e9f024324438c8485a239007e3497Model.Shelves_Books" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

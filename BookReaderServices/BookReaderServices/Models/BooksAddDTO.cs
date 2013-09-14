@@ -11,7 +11,7 @@ namespace BookReaderServices.Models
         public string Description { get; set; }
         [DataMember(Name = "authorId")]
         public int AuthorId { get; set; }
-
+        [DataMember(Name = "categoryId")]
         public int CategoryId { get; set; }
     }
 }

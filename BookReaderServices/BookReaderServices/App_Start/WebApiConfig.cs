@@ -10,6 +10,23 @@ namespace BookReaderServices
         public static void Register(HttpConfiguration config)
         {
             config.Routes.MapHttpRoute(
+                name: "AuthorsApi",
+                routeTemplate: "api/authors/{action}",
+                defaults: new
+                {
+                    controller = "authors"
+                }
+            );
+            config.Routes.MapHttpRoute(
+                name: "CommentsApi",
+                routeTemplate: "api/comments/{action}",
+                defaults: new
+                {
+                    controller = "comments"
+                }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "BooksApi",
                 routeTemplate: "api/books/{action}",
                 defaults: new

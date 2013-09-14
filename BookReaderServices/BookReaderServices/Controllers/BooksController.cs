@@ -47,41 +47,6 @@ namespace BookReaderServices.Controllers
             return responseMsg;
         }
 
-        // GET api/books/5
-        [ActionName("getallbooks")]
-        public HttpResponseMessage Get(int categoryID)
-        {
-            var responseMsg = this.PerformOperationAndHandleExceptions(
-               () =>
-               {
-                   var context = new BookReaderEntities();
-                   using (context)
-                   {
-                       var allBooks =
-                           from book in context.Books
-                           where book.CategoryID == categoryID
-                           select new BooksDTO()
-                           {
-                               Id = book.id,
-                               Rating = book.Rating,
-                               Title = book.TItle,
-                               Description = book.Description,
-                               CategoryDetails = book.Category.Title,
-                               AuthorInfo = new AuthorByBookDTO()
-                               {
-                                   FirstName = book.Author.Name,
-                                   LastName = book.Author.Surname,
-                               }
-                           };
-                       var response =
-                           this.Request.CreateResponse(HttpStatusCode.Created, allBooks);
-                       return response;
-                   }
-               });
-
-            return responseMsg;
-        }
-
         // POST api/books
         [ActionName("postbook")]
         public HttpResponseMessage Post(
@@ -124,7 +89,7 @@ namespace BookReaderServices.Controllers
             return responseMsg;
         }
 
-        // PUT api/books/5
+        // PUT api/books/updatebook?bookId=10
         [ActionName("updatebook")]
         public HttpResponseMessage Put([ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey,
             [FromBody]BooksPutModelDTO body, int bookId)

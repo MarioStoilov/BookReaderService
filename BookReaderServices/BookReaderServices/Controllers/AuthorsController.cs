@@ -14,6 +14,7 @@ namespace BookReaderServices.Controllers
     public class AuthorsController : BaseApiController
     {
         // POST api/authors
+        [ActionName("createAuthor")]
         public HttpResponseMessage Post(
             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey,
             [FromBody]AuthorsAddDTO value)

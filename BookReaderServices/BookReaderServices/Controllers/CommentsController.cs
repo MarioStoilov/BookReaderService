@@ -13,7 +13,7 @@ namespace BookReaderServices.Controllers
 {
     public class CommentsController : BaseApiController
     {
-        // GET api/comments/5
+        // GET api/comments/getbookcomments
         [ActionName("getbookcomments")]
         public HttpResponseMessage Get(
             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey,
@@ -34,14 +34,14 @@ namespace BookReaderServices.Controllers
                          }
 
                          var allComments =
-                             from comment in context.Comments
+                             (from comment in context.Comments
                              where comment.BookID == bookId
                              select new CommentsByBookDTO()
                              {
                                  Id = comment.Id,
                                  Info = comment.Body,
                                  Username = comment.User.Username,
-                             };
+                             }).ToList() ;
 
                          var response =
                              this.Request.CreateResponse(HttpStatusCode.OK, allComments);
@@ -52,7 +52,16 @@ namespace BookReaderServices.Controllers
             return responseMsg;
         }
 
-        //// POST api/comments
+        //// POST api/comments/postcomments
+        /*
+         {
+            'bookId':10,
+            'title':'my comment',
+            'info':'some info',
+            }
+         */
+        [ActionName("postcomments")]
+        [HttpPost]
         public HttpResponseMessage Post([ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey,
             [FromBody]CommentsAddDTO value)
         {

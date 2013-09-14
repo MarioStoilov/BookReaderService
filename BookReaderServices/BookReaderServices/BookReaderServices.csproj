@@ -174,10 +174,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AuthorByBookDTO.cs" />
+    <Compile Include="Models\AuthorsAddDTO.cs" />
     <Compile Include="Models\BooksAddDTO.cs" />
     <Compile Include="Models\BooksDeleteDTO.cs" />
     <Compile Include="Models\BooksDTO.cs" />
     <Compile Include="Models\BooksPutModelDTO.cs" />
+    <Compile Include="Models\CommentsAddDTO.cs" />
     <Compile Include="Models\CommentsByBookDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

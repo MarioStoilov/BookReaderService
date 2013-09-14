@@ -44,7 +44,7 @@ namespace BookReaderServices.Controllers
                              };
 
                          var response =
-                             this.Request.CreateResponse(HttpStatusCode.OK);
+                             this.Request.CreateResponse(HttpStatusCode.OK, allComments);
                          return response;
                      }
                  });
@@ -53,43 +53,43 @@ namespace BookReaderServices.Controllers
         }
 
         //// POST api/comments
-        //public HttpResponseMessage Post([ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey,
-        //    [FromBody]CommentsAddDTO value)
-        //{
-        //    var responseMsg = this.PerformOperationAndHandleExceptions(
-        //         () =>
-        //         {
-        //             var context = new BookReaderEntities();
-        //             using (context)
-        //             {
-        //                 var user = context.Users.FirstOrDefault(
-        //                       usr => usr.sessionKey == sessionKey);
+        public HttpResponseMessage Post([ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey,
+            [FromBody]CommentsAddDTO value)
+        {
+            var responseMsg = this.PerformOperationAndHandleExceptions(
+                 () =>
+                 {
+                     var context = new BookReaderEntities();
+                     using (context)
+                     {
+                         var user = context.Users.FirstOrDefault(
+                               usr => usr.sessionKey == sessionKey);
 
-        //                 if (user == null)
-        //                 {
-        //                     throw new InvalidOperationException("Users does not exist");
-        //                 }
+                         if (user == null)
+                         {
+                             throw new InvalidOperationException("Users does not exist");
+                         }
 
 
-        //                 Comment comment = new Comment()
-        //                 {
-        //                     Body = value.Info,
-        //                     BookID = value.BookId,
-        //                     Title = value.Title,
-        //                     User = user,
-        //                 };
+                         Comment comment = new Comment()
+                         {
+                             Body = value.Info,
+                             BookID = value.BookId,
+                             Title = value.Title,
+                             User = user,
+                         };
 
-        //                 context.Comments.Add(comment);
-        //                 context.SaveChanges();
+                         context.Comments.Add(comment);
+                         context.SaveChanges();
 
-        //                 var response =
-        //                     this.Request.CreateResponse(HttpStatusCode.Created);
-        //                 return response;
-        //             }
-        //         });
+                         var response =
+                             this.Request.CreateResponse(HttpStatusCode.Created);
+                         return response;
+                     }
+                 });
 
-        //    return responseMsg;
-        
-        //}
+            return responseMsg;
+
+        }
     }
 }

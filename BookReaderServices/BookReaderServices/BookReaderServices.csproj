@@ -166,6 +166,7 @@
     <Compile Include="Attributes\HeaderValueProvider.cs" />
     <Compile Include="Attributes\HeaderValueProviderFactory.cs" />
     <Compile Include="Controllers\BooksController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
@@ -173,7 +174,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AuthorByBookDTO.cs" />
+    <Compile Include="Models\BooksAddDTO.cs" />
+    <Compile Include="Models\BooksDeleteDTO.cs" />
     <Compile Include="Models\BooksDTO.cs" />
+    <Compile Include="Models\BooksPutModelDTO.cs" />
+    <Compile Include="Models\CommentsByBookDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

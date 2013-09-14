@@ -22,3 +22,11 @@ E:\Telerik\XAML\13. Teamwork\Services\BookReaderService\BookReaderServices\BookS
 E:\Telerik\XAML\13. Teamwork\Services\BookReaderService\BookReaderServices\BookStore.Models\obj\Debug\BookStore.Models.csprojResolveAssemblyReference.cache
 E:\Telerik\XAML\13. Teamwork\Services\BookReaderService\BookReaderServices\BookStore.Models\obj\Debug\BookStore.Models.dll
 E:\Telerik\XAML\13. Teamwork\Services\BookReaderService\BookReaderServices\BookStore.Models\obj\Debug\BookStore.Models.pdb
+E:\Telerik\service\BookReaderService\BookReaderServices\BookStore.Models\bin\Debug\BookStore.Models.dll.config
+E:\Telerik\service\BookReaderService\BookReaderServices\BookStore.Models\bin\Debug\BookStore.Models.dll
+E:\Telerik\service\BookReaderService\BookReaderServices\BookStore.Models\bin\Debug\BookStore.Models.pdb
+E:\Telerik\service\BookReaderService\BookReaderServices\BookStore.Models\bin\Debug\EntityFramework.dll
+E:\Telerik\service\BookReaderService\BookReaderServices\BookStore.Models\bin\Debug\EntityFramework.xml
+E:\Telerik\service\BookReaderService\BookReaderServices\BookStore.Models\obj\Debug\BookStore.Models.csprojResolveAssemblyReference.cache
+E:\Telerik\service\BookReaderService\BookReaderServices\BookStore.Models\obj\Debug\BookStore.Models.dll
+E:\Telerik\service\BookReaderService\BookReaderServices\BookStore.Models\obj\Debug\BookStore.Models.pdb

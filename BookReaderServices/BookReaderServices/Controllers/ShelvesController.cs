@@ -191,6 +191,40 @@ namespace BookReaderServices.Controllers
 
         // GET api/shelves/getallshelves
         [ActionName("getallshelves")]
+        public HttpResponseMessage GetAll([ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
+        {
+            var responseMsg = this.PerformOperationAndHandleExceptions(
+                () =>
+                {
+                    var context = new BookReaderEntities();
+                    using (context)
+                    {
+                        var user = context.Users.FirstOrDefault(
+                              usr => usr.sessionKey == sessionKey);
+
+                        if (user == null)
+                        {
+                            throw new InvalidOperationException("Users does not exist");
+                        }
+
+                        var allShelves =
+                            from shelf in context.Shelves
+                            select new ShelvesGetAllDTO()
+                            {
+                                Title = shelf.Title,
+                                Id = shelf.Id,
+                                UserId = shelf.UserId,
+                            };
+                        var response =
+                            this.Request.CreateResponse(HttpStatusCode.OK, allShelves.ToList());
+                        return response;
+                    }
+                });
+
+            return responseMsg;
+        }
+
+        [ActionName("getusershelves")]
         public HttpResponseMessage Get([ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)
         {
             var responseMsg = this.PerformOperationAndHandleExceptions(
@@ -209,6 +243,7 @@ namespace BookReaderServices.Controllers
 
                         var allShelves =
                             from shelf in context.Shelves
+                            where shelf.UserId==user.Id
                             select new ShelvesGetAllDTO()
                             {
                                 Title = shelf.Title,

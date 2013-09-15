@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace BookReaderServices
 {
@@ -9,14 +10,26 @@ namespace BookReaderServices
     {
         public static void Register(HttpConfiguration config)
         {
+            
             config.Routes.MapHttpRoute(
                 name: "ShelvesApi",
                 routeTemplate: "api/shelves/{action}",
                 defaults: new
                 {
-                    controller = "shelves"
+                    controller = "shelves",
+                   
                 }
             );
+            config.Routes.MapHttpRoute(
+                name: "ShelvesBookApi",
+                routeTemplate: "api/shelves/{id}/{action}",
+                defaults: new
+                {
+                    controller = "shelves",
+                    id = UrlParameter.Optional
+                }
+            );
+
             config.Routes.MapHttpRoute(
                 name: "AuthorsApi",
                 routeTemplate: "api/authors/{action}",

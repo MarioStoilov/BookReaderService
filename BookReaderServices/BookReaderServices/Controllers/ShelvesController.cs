@@ -49,6 +49,58 @@ namespace BookReaderServices.Controllers
             return responseMsg;
         }
 
+        // GET api/shelves/5/books
+        [ActionName("books")]
+        public HttpResponseMessage GetBooks([ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey, int id)
+        {
+            var responseMsg = this.PerformOperationAndHandleExceptions(
+                () =>
+                {
+                    var context = new BookReaderEntities();
+                    using (context)
+                    {
+                        var user = context.Users.FirstOrDefault(
+                              usr => usr.sessionKey == sessionKey);
+
+                        if (user == null)
+                        {
+                            throw new InvalidOperationException("Users does not exist");
+                        }
+
+                        var foundBooks =
+                            (from shelf in context.Shelves
+                             where shelf.Id == id
+                             select shelf.Books).ToList();
+
+                        ICollection<BooksDTO> allBooks = new List<BooksDTO>();
+
+                        foreach (Book book in foundBooks)
+                        {
+                            allBooks.Add(new BooksDTO()
+                            {
+                                Title = book.TItle,
+                                AuthorInfo = new AuthorByBookDTO()
+                                {
+                                    FirstName = book.Author.Name,
+                                    LastName = book.Author.Surname,
+                                    Id = book.Author.Id
+                                },
+                                Description = book.Description,
+                                Id = book.id,
+                                Rating = book.Rating,
+                                CategoryDetails = book.Category.Title,
+                            });
+                        }
+
+                        var response =
+                            this.Request.CreateResponse(HttpStatusCode.OK, allBooks);
+                        return response;
+                    }
+                });
+
+            return responseMsg;
+        }
+
         // GET api/shelves/getallshelves
         [ActionName("getallshelves")]
         public HttpResponseMessage Get([ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)

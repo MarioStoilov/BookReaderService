@@ -305,5 +305,56 @@ namespace BookReaderServices.Controllers
 
             return responseMsg;
         }
+
+        // PUT api/shelves/5/removeBook
+        [ActionName("removeBook")]
+        public HttpResponseMessage PutUpdate([ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey, int id, [FromBody]int bookId)
+        {
+            var responseMsg = this.PerformOperationAndHandleExceptions(
+                () =>
+                {
+                    var context = new BookReaderEntities();
+                    using (context)
+                    {
+                        var user = context.Users.FirstOrDefault(
+                              usr => usr.sessionKey == sessionKey);
+
+                        if (user == null)
+                        {
+                            throw new InvalidOperationException("Users does not exist");
+                        }
+
+                        var shelfToUpdate = context.Shelves.FirstOrDefault(s => s.Id == id);
+
+                        if (shelfToUpdate == null)
+                        {
+                            throw new InvalidOperationException("Shelf does not exist");
+                        }
+
+                        if (shelfToUpdate.UserId != user.Id)
+                        {
+                            throw new InvalidOperationException("This shelf does not belong to you");
+                        }
+
+                        var bookToRemove = context.Books.FirstOrDefault(
+                              book => book.id== bookId);
+
+                        if (bookToRemove==null)
+                        {
+                            throw new InvalidOperationException("This book is not in the shelf");
+                        }
+
+                        shelfToUpdate.Books.Remove(bookToRemove);
+                        context.SaveChanges();
+
+
+                        var response =
+                            this.Request.CreateResponse(HttpStatusCode.OK);
+                        return response;
+                    }
+                });
+
+            return responseMsg;
+        }
     }
 }

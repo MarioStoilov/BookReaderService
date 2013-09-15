@@ -167,6 +167,7 @@
     <Compile Include="Attributes\HeaderValueProviderFactory.cs" />
     <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ShelvesController.cs" />
@@ -182,6 +183,7 @@
     <Compile Include="Models\BooksDTO.cs" />
     <Compile Include="Models\BooksPutModelDTO.cs" />
     <Compile Include="Models\BookToShelfDTO.cs" />
+    <Compile Include="Models\CategoriesDTO.cs" />
     <Compile Include="Models\CommentsAddDTO.cs" />
     <Compile Include="Models\CommentsByBookDTO.cs" />
     <Compile Include="Models\ShelvesDTO.cs" />

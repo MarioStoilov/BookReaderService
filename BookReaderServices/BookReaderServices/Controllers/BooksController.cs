@@ -47,7 +47,7 @@ namespace BookReaderServices.Controllers
             return responseMsg;
         }
 
-        // POST api/books
+        // POST api/books/postbook
         [ActionName("postbook")]
         public HttpResponseMessage Post(
             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey,

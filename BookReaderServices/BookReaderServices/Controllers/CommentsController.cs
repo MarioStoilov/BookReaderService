@@ -13,7 +13,7 @@ namespace BookReaderServices.Controllers
 {
     public class CommentsController : BaseApiController
     {
-        // GET api/comments/getbookcomments
+        // GET api/comments/getbookcomments?bookId=10
         [ActionName("getbookcomments")]
         public HttpResponseMessage Get(
             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey,

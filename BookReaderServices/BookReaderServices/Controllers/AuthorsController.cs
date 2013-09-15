@@ -13,7 +13,7 @@ namespace BookReaderServices.Controllers
 {
     public class AuthorsController : BaseApiController
     {
-        // POST api/authors
+        // POST api/authors/createAuthor
         [ActionName("createAuthor")]
         public HttpResponseMessage Post(
             [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey,

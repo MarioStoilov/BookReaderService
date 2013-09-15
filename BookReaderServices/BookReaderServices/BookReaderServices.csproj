@@ -169,6 +169,7 @@
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShelvesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Global.asax.cs">
@@ -182,6 +183,8 @@
     <Compile Include="Models\BooksPutModelDTO.cs" />
     <Compile Include="Models\CommentsAddDTO.cs" />
     <Compile Include="Models\CommentsByBookDTO.cs" />
+    <Compile Include="Models\ShelvesDTO.cs" />
+    <Compile Include="Models\ShelvesGetAllDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

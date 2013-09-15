@@ -181,6 +181,7 @@
     <Compile Include="Models\BooksDeleteDTO.cs" />
     <Compile Include="Models\BooksDTO.cs" />
     <Compile Include="Models\BooksPutModelDTO.cs" />
+    <Compile Include="Models\BookToShelfDTO.cs" />
     <Compile Include="Models\CommentsAddDTO.cs" />
     <Compile Include="Models\CommentsByBookDTO.cs" />
     <Compile Include="Models\ShelvesDTO.cs" />

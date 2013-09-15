@@ -89,6 +89,50 @@ namespace BookReaderServices.Controllers
             return responseMsg;
         }
 
+        // POST api/books/addbooktoshelf
+        [ActionName("addbooktoshelf")]
+        public HttpResponseMessage PostToShelf(
+            [ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey,
+            [FromBody]BookToShelfDTO body)
+        {
+            var responseMsg = this.PerformOperationAndHandleExceptions(
+            () =>
+            {
+                var context = new BookReaderEntities();
+                using (context)
+                {
+                    var user = context.Users.FirstOrDefault(
+                                usr => usr.sessionKey == sessionKey);
+
+                    if (user == null)
+                    {
+                        throw new InvalidOperationException("Users does not exist");
+                    }
+                    
+                        var shelf = context.Shelves.FirstOrDefault(
+                               sh => sh.Id == body.ShelfId);
+
+                        var book = context.Books.FirstOrDefault(
+                            b=>b.id == body.BookId);
+                        if (book == null || shelf == null)
+                        {
+                            throw new ArgumentException("shelf or book not existing");
+                        }
+
+
+                        shelf.Books.Add(book);
+                        context.SaveChanges();
+                    
+
+                    var response =
+                        this.Request.CreateResponse(HttpStatusCode.Created);
+                    return response;
+                }
+            });
+
+            return responseMsg;
+        }
+
         // PUT api/books/updatebook?bookId=10
         [ActionName("updatebook")]
         public HttpResponseMessage Put([ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey,

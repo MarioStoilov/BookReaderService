@@ -70,11 +70,11 @@ namespace BookReaderServices.Controllers
                         var foundBooks =
                             (from shelf in context.Shelves
                              where shelf.Id == id
-                             select shelf.Books).ToList();
+                             select shelf.Books).FirstOrDefault();
 
                         ICollection<BooksDTO> allBooks = new List<BooksDTO>();
 
-                        foreach (Book book in foundBooks)
+                        foreach (var book in foundBooks)
                         {
                             allBooks.Add(new BooksDTO()
                             {
@@ -93,7 +93,7 @@ namespace BookReaderServices.Controllers
                         }
 
                         var response =
-                            this.Request.CreateResponse(HttpStatusCode.OK, allBooks.ToList());
+                            this.Request.CreateResponse(HttpStatusCode.OK, allBooks);
                         return response;
                     }
                 });

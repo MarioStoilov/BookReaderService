@@ -101,6 +101,94 @@ namespace BookReaderServices.Controllers
             return responseMsg;
         }
 
+        // PUT api/shelves/5/update
+        [ActionName("update")]
+        public HttpResponseMessage PutUpdate([ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey, int id, [FromBody]ShelvesDTO shelf)
+        {
+            var responseMsg = this.PerformOperationAndHandleExceptions(
+                () =>
+                {
+                    var context = new BookReaderEntities();
+                    using (context)
+                    {
+                        var user = context.Users.FirstOrDefault(
+                              usr => usr.sessionKey == sessionKey);
+
+                        if (user == null)
+                        {
+                            throw new InvalidOperationException("Users does not exist");
+                        }
+
+                        var shelfToUpdate = context.Shelves.FirstOrDefault(s => s.Id == id);
+
+                        if (shelfToUpdate == null)
+                        {
+                            throw new InvalidOperationException("Shelf does not exist");
+                        }
+
+                        if (shelfToUpdate.UserId!=user.Id)
+                        {
+                            throw new InvalidOperationException("This shelf does not belong to you");
+                        }
+
+                        shelfToUpdate.Title = shelf.Title;
+                        context.SaveChanges();
+
+
+                        var response =
+                            this.Request.CreateResponse(HttpStatusCode.OK);
+                        return response;
+                    }
+                });
+
+            return responseMsg;
+        }
+
+        // PUT api/shelves/5/remove
+        [ActionName("remove")]
+        public HttpResponseMessage DeleteShelf([ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey, int id)
+        {
+            var responseMsg = this.PerformOperationAndHandleExceptions(
+                () =>
+                {
+                    var context = new BookReaderEntities();
+                    using (context)
+                    {
+                        var user = context.Users.FirstOrDefault(
+                              usr => usr.sessionKey == sessionKey);
+
+                        if (user == null)
+                        {
+                            throw new InvalidOperationException("Users does not exist");
+                        }
+
+                        var shelfToRemove = context.Shelves.FirstOrDefault(s => s.Id == id);
+
+                        if (shelfToRemove == null)
+                        {
+                            throw new InvalidOperationException("Shelf does not exist");
+                        }
+
+                        if (shelfToRemove.UserId != user.Id)
+                        {
+                            throw new InvalidOperationException("This shelf does not belong to you");
+                        }
+
+                        shelfToRemove.Books.Clear();
+
+                        context.Shelves.Remove(shelfToRemove);
+                        context.SaveChanges();
+
+
+                        var response =
+                            this.Request.CreateResponse(HttpStatusCode.OK);
+                        return response;
+                    }
+                });
+
+            return responseMsg;
+        }
+
         // GET api/shelves/getallshelves
         [ActionName("getallshelves")]
         public HttpResponseMessage Get([ValueProvider(typeof(HeaderValueProviderFactory<string>))] string sessionKey)

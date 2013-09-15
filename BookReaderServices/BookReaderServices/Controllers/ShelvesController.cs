@@ -93,7 +93,7 @@ namespace BookReaderServices.Controllers
                         }
 
                         var response =
-                            this.Request.CreateResponse(HttpStatusCode.OK, allBooks);
+                            this.Request.CreateResponse(HttpStatusCode.OK, allBooks.ToList());
                         return response;
                     }
                 });

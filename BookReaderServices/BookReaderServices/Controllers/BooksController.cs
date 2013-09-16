@@ -110,7 +110,7 @@ namespace BookReaderServices.Controllers
                     }
                     
                         var shelf = context.Shelves.FirstOrDefault(
-                               sh => sh.Id == body.ShelfId && sh.User == user);
+                               sh => sh.Id == body.ShelfId && sh.User.Id == user.Id);
 
                         var book = context.Books.FirstOrDefault(
                             b=>b.id == body.BookId);

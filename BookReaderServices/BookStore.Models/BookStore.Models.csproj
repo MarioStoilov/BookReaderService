@@ -91,7 +91,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="BookReader.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BookReader.Designer.cs</LastGenOutput>

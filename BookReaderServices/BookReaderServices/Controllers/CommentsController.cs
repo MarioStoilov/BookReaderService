@@ -41,6 +41,7 @@ namespace BookReaderServices.Controllers
                                  Id = comment.Id,
                                  Info = comment.Body,
                                  Username = comment.User.Username,
+                                 Title = comment.Title,
                              }).ToList() ;
 
                          var response =

@@ -11,5 +11,7 @@ namespace BookReaderServices.Models
         public string Username { get; set; }
         [DataMember(Name = "info")]
         public string Info { get; set; }
+        [DataMember(Name = "title")]
+        public string Title { get; set; }
     }
 }

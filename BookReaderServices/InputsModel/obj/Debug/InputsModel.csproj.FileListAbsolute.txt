@@ -1,0 +1,8 @@
+C:\Users\Anna\Documents\GitHub\BookReaderService\BookReaderService\BookReaderServices\InputsModel\bin\Debug\InputsModel.dll.config
+C:\Users\Anna\Documents\GitHub\BookReaderService\BookReaderService\BookReaderServices\InputsModel\bin\Debug\InputsModel.dll
+C:\Users\Anna\Documents\GitHub\BookReaderService\BookReaderService\BookReaderServices\InputsModel\bin\Debug\InputsModel.pdb
+C:\Users\Anna\Documents\GitHub\BookReaderService\BookReaderService\BookReaderServices\InputsModel\bin\Debug\EntityFramework.dll
+C:\Users\Anna\Documents\GitHub\BookReaderService\BookReaderService\BookReaderServices\InputsModel\bin\Debug\EntityFramework.xml
+C:\Users\Anna\Documents\GitHub\BookReaderService\BookReaderService\BookReaderServices\InputsModel\obj\Debug\InputsModel.csprojResolveAssemblyReference.cache
+C:\Users\Anna\Documents\GitHub\BookReaderService\BookReaderService\BookReaderServices\InputsModel\obj\Debug\InputsModel.dll
+C:\Users\Anna\Documents\GitHub\BookReaderService\BookReaderService\BookReaderServices\InputsModel\obj\Debug\InputsModel.pdb

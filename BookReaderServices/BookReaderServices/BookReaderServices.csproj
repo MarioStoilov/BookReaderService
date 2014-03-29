@@ -170,6 +170,7 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InputsController.cs" />
     <Compile Include="Controllers\ShelvesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
@@ -313,6 +314,10 @@
     <ProjectReference Include="..\BookStore.Models\BookStore.Models.csproj">
       <Project>{96b3a958-36fd-4ad8-91b1-9d36d584d1e6}</Project>
       <Name>BookStore.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InputsModel\InputsModel.csproj">
+      <Project>{389c6a6d-3b18-4f00-bd93-f578797c523f}</Project>
+      <Name>InputsModel</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

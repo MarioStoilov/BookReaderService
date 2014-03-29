@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db680e9f024324438c8485a239007e3497Model" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="db680e9f024324438c8485a239007e3497Entities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Authors" EntityType="db680e9f024324438c8485a239007e3497Model.Authors" />
+    <EntitySet Name="Books" EntityType="db680e9f024324438c8485a239007e3497Model.Books" />
+    <EntitySet Name="Categories" EntityType="db680e9f024324438c8485a239007e3497Model.Categories" />
+    <EntitySet Name="Comments" EntityType="db680e9f024324438c8485a239007e3497Model.Comments" />
+    <EntitySet Name="Inputs" EntityType="db680e9f024324438c8485a239007e3497Model.Inputs" />
+    <EntitySet Name="Review" EntityType="db680e9f024324438c8485a239007e3497Model.Review" />
+    <EntitySet Name="Shelves" EntityType="db680e9f024324438c8485a239007e3497Model.Shelves" />
+    <EntitySet Name="sysdiagrams" EntityType="db680e9f024324438c8485a239007e3497Model.sysdiagrams" />
+    <EntitySet Name="Users" EntityType="db680e9f024324438c8485a239007e3497Model.Users" />
+    <AssociationSet Name="FK_Books_Authors" Association="db680e9f024324438c8485a239007e3497Model.FK_Books_Authors">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="Books" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Books_Categories" Association="db680e9f024324438c8485a239007e3497Model.FK_Books_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Books" EntitySet="Books" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comments_Books" Association="db680e9f024324438c8485a239007e3497Model.FK_Comments_Books">
+      <End Role="Books" EntitySet="Books" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Review_Books" Association="db680e9f024324438c8485a239007e3497Model.FK_Review_Books">
+      <End Role="Books" EntitySet="Books" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comments_Users" Association="db680e9f024324438c8485a239007e3497Model.FK_Comments_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Review_Users" Association="db680e9f024324438c8485a239007e3497Model.FK_Review_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shelves_Users" Association="db680e9f024324438c8485a239007e3497Model.FK_Shelves_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Shelves" EntitySet="Shelves" />
+    </AssociationSet>
+    <AssociationSet Name="Comments_Books" Association="db680e9f024324438c8485a239007e3497Model.Comments_Books">
+      <End Role="Books" EntitySet="Books" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="Shelves_Books" Association="db680e9f024324438c8485a239007e3497Model.Shelves_Books">
+      <End Role="Books" EntitySet="Books" />
+      <End Role="Shelves" EntitySet="Shelves" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Authors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Nickname" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Books" Relationship="db680e9f024324438c8485a239007e3497Model.FK_Books_Authors" FromRole="Authors" ToRole="Books" />
+  </EntityType>
+  <EntityType Name="Books">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="TItle" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="AuthorID" Type="Int32" Nullable="false" />
+    <Property Name="Rating" Type="Int32" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Authors" Relationship="db680e9f024324438c8485a239007e3497Model.FK_Books_Authors" FromRole="Books" ToRole="Authors" />
+    <NavigationProperty Name="Categories" Relationship="db680e9f024324438c8485a239007e3497Model.FK_Books_Categories" FromRole="Books" ToRole="Categories" />
+    <NavigationProperty Name="Comments" Relationship="db680e9f024324438c8485a239007e3497Model.FK_Comments_Books" FromRole="Books" ToRole="Comments" />
+    <NavigationProperty Name="Review" Relationship="db680e9f024324438c8485a239007e3497Model.FK_Review_Books" FromRole="Books" ToRole="Review" />
+    <NavigationProperty Name="Comments1" Relationship="db680e9f024324438c8485a239007e3497Model.Comments_Books" FromRole="Books" ToRole="Comments" />
+    <NavigationProperty Name="Shelves" Relationship="db680e9f024324438c8485a239007e3497Model.Shelves_Books" FromRole="Books" ToRole="Shelves" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Books" Relationship="db680e9f024324438c8485a239007e3497Model.FK_Books_Categories" FromRole="Categories" ToRole="Books" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="BookID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Books" Relationship="db680e9f024324438c8485a239007e3497Model.FK_Comments_Books" FromRole="Comments" ToRole="Books" />
+    <NavigationProperty Name="Users" Relationship="db680e9f024324438c8485a239007e3497Model.FK_Comments_Users" FromRole="Comments" ToRole="Users" />
+    <NavigationProperty Name="Books1" Relationship="db680e9f024324438c8485a239007e3497Model.Comments_Books" FromRole="Comments" ToRole="Books" />
+  </EntityType>
+  <EntityType Name="Inputs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="input" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="BookID" Type="Int32" Nullable="false" />
+    <Property Name="Rating" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Books" Relationship="db680e9f024324438c8485a239007e3497Model.FK_Review_Books" FromRole="Review" ToRole="Books" />
+    <NavigationProperty Name="Users" Relationship="db680e9f024324438c8485a239007e3497Model.FK_Review_Users" FromRole="Review" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Shelves">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Users" Relationship="db680e9f024324438c8485a239007e3497Model.FK_Shelves_Users" FromRole="Shelves" ToRole="Users" />
+    <NavigationProperty Name="Books" Relationship="db680e9f024324438c8485a239007e3497Model.Shelves_Books" FromRole="Shelves" ToRole="Books" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="AuthCode" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="true" />
+    <Property Name="sessionKey" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="IsEditor" Type="Boolean" Nullable="false" />
+    <Property Name="IsAuthor" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Comments" Relationship="db680e9f024324438c8485a239007e3497Model.FK_Comments_Users" FromRole="Users" ToRole="Comments" />
+    <NavigationProperty Name="Review" Relationship="db680e9f024324438c8485a239007e3497Model.FK_Review_Users" FromRole="Users" ToRole="Review" />
+    <NavigationProperty Name="Shelves" Relationship="db680e9f024324438c8485a239007e3497Model.FK_Shelves_Users" FromRole="Users" ToRole="Shelves" />
+  </EntityType>
+  <Association Name="FK_Books_Authors">
+    <End Role="Authors" Type="db680e9f024324438c8485a239007e3497Model.Authors" Multiplicity="1" />
+    <End Role="Books" Type="db680e9f024324438c8485a239007e3497Model.Books" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Books">
+        <PropertyRef Name="AuthorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Books_Categories">
+    <End Role="Categories" Type="db680e9f024324438c8485a239007e3497Model.Categories" Multiplicity="1" />
+    <End Role="Books" Type="db680e9f024324438c8485a239007e3497Model.Books" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Books">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comments_Books">
+    <End Role="Books" Type="db680e9f024324438c8485a239007e3497Model.Books" Multiplicity="1" />
+    <End Role="Comments" Type="db680e9f024324438c8485a239007e3497Model.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Books">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Review_Books">
+    <End Role="Books" Type="db680e9f024324438c8485a239007e3497Model.Books" Multiplicity="1" />
+    <End Role="Review" Type="db680e9f024324438c8485a239007e3497Model.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Books">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comments_Users">
+    <End Role="Users" Type="db680e9f024324438c8485a239007e3497Model.Users" Multiplicity="1" />
+    <End Role="Comments" Type="db680e9f024324438c8485a239007e3497Model.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Review_Users">
+    <End Role="Users" Type="db680e9f024324438c8485a239007e3497Model.Users" Multiplicity="1" />
+    <End Role="Review" Type="db680e9f024324438c8485a239007e3497Model.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shelves_Users">
+    <End Role="Users" Type="db680e9f024324438c8485a239007e3497Model.Users" Multiplicity="1" />
+    <End Role="Shelves" Type="db680e9f024324438c8485a239007e3497Model.Shelves" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Shelves">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Comments_Books">
+    <End Role="Books" Type="db680e9f024324438c8485a239007e3497Model.Books" Multiplicity="*" />
+    <End Role="Comments" Type="db680e9f024324438c8485a239007e3497Model.Comments" Multiplicity="*" />
+  </Association>
+  <Association Name="Shelves_Books">
+    <End Role="Books" Type="db680e9f024324438c8485a239007e3497Model.Books" Multiplicity="*" />
+    <End Role="Shelves" Type="db680e9f024324438c8485a239007e3497Model.Shelves" Multiplicity="*" />
+  </Association>
+</Schema>
